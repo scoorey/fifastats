@@ -1,0 +1,107 @@
+<div class="container">
+  <h2>My todos</h2>
+
+  <form role="form" ng-submit="fetch()">
+      
+      <span class="input-group-btn">
+          <input type="submit" class="btn btn-primary" value="Fetch">
+        </span>
+  </form>
+  <div class="match-history-item" ng-repeat="matchData in recentGames" >
+      <div class="col50">
+                <h2 ng-show="matchData.self.stats.wins == '1'">Win</h2>
+                <h2 ng-show="matchData.self.stats.ties == '1'">Draw</h2>
+                <h2 ng-show="matchData.self.stats.losses == '1'">Loss</h2>
+      </div>
+
+      <div class="col100"> 
+        <div class="col70 match-stats" ng-class="{win: matchData.self.stats.wins == '1', draw: matchData.self.stats.ties == '1', loss: matchData.self.stats.losses == '1'}">
+          <div class="self">
+            <div class="score" ng-class="{winner: matchData.self.stats.wins == '1'}">{{matchData.self.stats.score }}</div>
+              <div>
+                <div class="col15 club-crest align-left">
+                  <img ng-src="{{ getHomeCrest(matchData.self.stats.team) }}">
+                </div>
+                {{matchData.self.user_info}}
+              </div>      
+          </div>
+          <div class="opponent">
+            <div class="score" ng-class="{winner: matchData.opponent.stats.wins == '1'}">{{matchData.opponent.stats.score }}</div>
+                <div>
+                      <div class="col15 club-crest align-right">
+                        <img ng-src="{{getHomeCrest(matchData.opponent.stats.team)}}">
+                      </div>
+                            {{matchData.opponent.user_info}}
+                    </div>        
+            </div>
+          </div>
+        </div>         
+      </div>
+    </div>
+
+ <table >
+
+
+  <tbody ng:repeat="matchData in recentGames">
+    <tr><td ><div>{{matchData.self.user_info}}</div></td>  <td ><div class="col15 club-crest align-right">
+                        <img ng-src="{{getHomeCrest(matchData.self.stats.team)}}">
+                      </div></td>  <td><div class="score" ng-class="{winner: matchData.self.stats.wins == '1'}">{{matchData.self.stats.score }}</div></td><td>{{matchData.opponent.user_info}}</td>
+                      <td><div class="col15 club-crest align-right">
+                        <img ng-src="{{getHomeCrest(matchData.opponent.stats.team)}}">
+                      </div></td><td><div class="score" ng-class="{winner: matchData.opponent.stats.wins == '1'}">{{matchData.opponent.stats.score }}</div></td></tr>
+   
+  </tbody>
+</table> 
+   <!-- Todos input -->
+  <form role="form" ng-submit="addTodo()">
+    <div class="row">
+      <div class="input-group">
+        <input type="text" ng-model="todo" placeholder="What needs to be done?" class="form-control">
+
+        <select ng-model="results.result"
+                ng-options="obj for obj in results.options">
+                   <option value="">Result</option>
+        </select>
+
+        <input type="text" ng-model="goalsfor" placeholder="Goals For" class="form-control">
+        <input type="text" ng-model="goalsagainst" placeholder="Goals Against" class="form-control">
+      <select ng-model="formations.formation"
+                ng-options="obj for obj in formations.options">
+                   <option value="">Formation</option>
+        </select>
+
+          <select ng-model="formations.theirformation"
+                ng-options="obj for obj in formations.options">
+                   <option value="">Their Formation</option>
+        </select>
+
+         <select ng-model="divs.div"
+                ng-options="obj for obj in divs.options">
+                  <option value="">Division</option>
+        </select>
+      <br />
+
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn-primary" value="Add">
+        </span>
+
+      </div>
+    </div>
+  </form>
+  <p></p>
+
+  <!-- for each todo in todos, sub the current todo in an input box -->
+  <!-- Todos list -->
+
+
+  
+    <p class="input-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
+      <input type="text" ng-model="todo" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-danger" ng-click="removeTodo($index)" aria-label="Remove">X</button>
+      </span>
+    </p>
+
+
+     
+</div>
