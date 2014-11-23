@@ -1,56 +1,140 @@
 <div class="container">
-  <h2>My todos</h2>
+  <h2>Enter FIFA match stats</h2>
+ <style type="text/css">
+      .selected {
+        background-color: lightgreen;
+      }
 
+      .oppStat{
+        padding-left: 210px;
+      }
+
+      .statName{
+        padding-left: 70px;
+      }
+    </style>
   <form role="form" ng-submit="fetch()">
       
       <span class="input-group-btn">
-          <input type="submit" class="btn btn-primary" value="Fetch">
+          <input type="submit" class="btn btn-primary" value="Fetch recent games">
         </span>
   </form>
-  <div class="match-history-item" ng-repeat="matchData in recentGames" >
-      <div class="col50">
-                <h2 ng-show="matchData.self.stats.wins == '1'">Win</h2>
-                <h2 ng-show="matchData.self.stats.ties == '1'">Draw</h2>
-                <h2 ng-show="matchData.self.stats.losses == '1'">Loss</h2>
-      </div>
-
-      <div class="col100"> 
-        <div class="col70 match-stats" ng-class="{win: matchData.self.stats.wins == '1', draw: matchData.self.stats.ties == '1', loss: matchData.self.stats.losses == '1'}">
-          <div class="self">
-            <div class="score" ng-class="{winner: matchData.self.stats.wins == '1'}">{{matchData.self.stats.score }}</div>
-              <div>
-                <div class="col15 club-crest align-left">
-                  <img ng-src="{{ getHomeCrest(matchData.self.stats.team) }}">
-                </div>
-                {{matchData.self.user_info}}
-              </div>      
-          </div>
-          <div class="opponent">
-            <div class="score" ng-class="{winner: matchData.opponent.stats.wins == '1'}">{{matchData.opponent.stats.score }}</div>
-                <div>
-                      <div class="col15 club-crest align-right">
-                        <img ng-src="{{getHomeCrest(matchData.opponent.stats.team)}}">
-                      </div>
-                            {{matchData.opponent.user_info}}
-                    </div>        
-            </div>
-          </div>
-        </div>         
-      </div>
-    </div>
+ 
 
  <table >
 
 
-  <tbody ng:repeat="matchData in recentGames">
-    <tr><td ><div>{{matchData.self.user_info}}</div></td>  <td ><div class="col15 club-crest align-right">
-                        <img ng-src="{{getHomeCrest(matchData.self.stats.team)}}">
-                      </div></td>  <td><div class="score" ng-class="{winner: matchData.self.stats.wins == '1'}">{{matchData.self.stats.score }}</div></td><td>{{matchData.opponent.user_info}}</td>
-                      <td><div class="col15 club-crest align-right">
-                        <img ng-src="{{getHomeCrest(matchData.opponent.stats.team)}}">
-                      </div></td><td><div class="score" ng-class="{winner: matchData.opponent.stats.wins == '1'}">{{matchData.opponent.stats.score }}</div></td></tr>
+  <tbody class="match-history-item" ng:repeat="matchData in recentGames" >
+    <tr ng-click='selectRestaurant($index)'
+          ng-class='{selected: $index==selectedRow}' >
+ 
+
+                      <td ><div class="col15 club-crest align-right">
+                        <!-- <img ng-src="{{getHomeCrest(matchData.self.stats.team)}}"> -->
+                      </div></td>  
+   <td >
+       
+                           <div style="padding-right:40px">{{matchData.self.user_info}}</div>
+
+                     
+    </td>  
+                      <td>
+                        <div class="match-stats" ng-class="{win: matchData.self.stats.wins == '1', draw: matchData.self.stats.ties == '1', loss: matchData.self.stats.losses == '1'}">
+                          <div class="self">
+                            <div class="score" style="float:left" ng-class="{winner: matchData.self.stats.wins == '1'}">{{matchData.self.stats.score }}</div>
+                          </div>
+                        </div>
+                     
+                      </td>
+
+                      <td>
+               
+                        <div class="match-stats" ng-class="{win: matchData.opponent.stats.wins == '1', draw: matchData.opponent.stats.ties == '1', loss: matchData.opponent.stats.losses == '1'}">
+                          <div class="opponent">
+                            <div class="score" style="float:right"  ng-class="{winner: matchData.opponent.stats.wins == '1'}">{{matchData.opponent.stats.score }}</div>
+                          </div>
+                        </div>
+                 
+                      </td>
+                            
+                             <td style="padding-left:40px">{{matchData.opponent.user_info}}</td>
+                      
+
+                      <td><div class="col15 club-crest">
+                        <!-- <img ng-src="{{getHomeCrest(matchData.opponent.stats.team)}}"> -->
+                      </div></td>
+
+                     
+                      </tr>
+
+                       <table>
+                    
+                    <tr >
+<td width="800px"> <div class="col100" ng-show="gameSelected" ng:repeat="matchData in recentGames">
+            <ul class="table-list">
+                <li>
+                    <div class="col33">{{matchData.self.stats.shot_on_target}}</div>
+                    <div class="col33 statName">Shots on Target</div>
+                    <div class="col33 oppStat" >{{ matchData.opponent.stats.shot_on_target}}</div>
+                </li>
+                <li>
+                    <div class="col33">{{matchData.self.stats.possession}}%</div>
+                    <div class="col33 statName">Possession</div>
+                    <div class="col33 oppStat">{{ matchData.opponent.stats.possession}}%</div>
+                </li>
+                <li>
+                    <div class="col33">{{ matchData.self.stats.pass_made / matchData.self.stats.pass_attempts * 100
+                        |
+                        number:0 }}%
+                    </div>
+                    <div class="col33 statName">Pass Accuracy</div>
+                    <div class="col33 oppStat">{{ matchData.opponent.stats.pass_made /
+                        matchData.opponent.stats.pass_attempts *
+                        100 | number:0 }}%
+                    </div>
+                </li>
+                <li>
+                    <div class="col33">{{ matchData.self.stats.tackles}}</div>
+                    <div class="col33 statName">Tackles</div>
+                    <div class="col33 oppStat">{{ matchData.opponent.stats.tackles}}</div>
+                </li>
+                <li>
+                    <div class="col33">{{ matchData.self.stats.fouls}}</div>
+                    <div class="col33 statName">Fouls</div>
+                    <div class="col33 oppStat">{{ matchData.opponent.stats.fouls}}</div>
+                </li>
+                <li>
+                    <div class="col33">{{ matchData.self.stats.yellow_cards}}</div>
+                    <div class="col33 statName">Yellow Cards</div>
+                    <div class="col33 oppStat">{{ matchData.opponent.stats.yellow_cards}}</div>
+                </li>
+                <li>
+                    <div class="col33">{{matchData.self.stats.red_cards}}</div>
+                    <div class="col33 statName">Red Cards</div>
+                    <div class="col33 oppStat">{{ matchData.opponent.stats.red_cards}}</div>
+                </li>
+                <li>
+                    <div class="col33">{{ matchData.self.stats.offsides}}</div>
+                    <div class="col33 statName">Offsides</div>
+                    <div class="col33 oppStat">{{ matchData.opponent.stats.offsides}}</div>
+                </li>
+            </ul>
+        </div> 
+        </td>
+ </tr >
+                        </table>
+
+                    </tbody>
+                    </table>
+
+                    
+
+
+
+                      
+ 
    
-  </tbody>
+                 
 </table> 
    <!-- Todos input -->
   <form role="form" ng-submit="addTodo()">
@@ -58,33 +142,40 @@
       <div class="input-group">
         <input type="text" ng-model="todo" placeholder="What needs to be done?" class="form-control">
 
-        <select ng-model="results.result"
-                ng-options="obj for obj in results.options">
-                   <option value="">Result</option>
-        </select>
 
-        <input type="text" ng-model="goalsfor" placeholder="Goals For" class="form-control">
-        <input type="text" ng-model="goalsagainst" placeholder="Goals Against" class="form-control">
-      <select ng-model="formations.formation"
+                <div >
+                <p>
+                Enter Game Stats:
+                </p>
+        <select style="width:200px;height:200px"  ng-model="formations.formation"
                 ng-options="obj for obj in formations.options">
-                   <option value="">Formation</option>
+                   <option ng-style="formationStyle"  value="">My Formation</option>
         </select>
-
-          <select ng-model="formations.theirformation"
+</div>
+<div>
+          <select style="width:200px;height:200px"  ng-model="formations.theirformation"
                 ng-options="obj for obj in formations.options">
                    <option value="">Their Formation</option>
         </select>
-
+</div>
+<br></br>
+        <p>
+        What division are you in?
+        </p>
          <select ng-model="divs.div"
                 ng-options="obj for obj in divs.options">
                   <option value="">Division</option>
         </select>
-      <br />
+
 
         <span class="input-group-btn">
           <input type="submit" class="btn btn-primary" value="Add">
         </span>
 
+      
+
+        <input type="text" ng-model="goalsfor" placeholder="Goals For" class="form-control">
+        <input type="text" ng-model="goalsagainst" placeholder="Goals Against" class="form-control">
       </div>
     </div>
   </form>
@@ -95,13 +186,13 @@
 
 
   
-    <p class="input-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
+ <!--    <p class="input-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
       <input type="text" ng-model="todo" class="form-control">
       <span class="input-group-btn">
         <button class="btn btn-danger" ng-click="removeTodo($index)" aria-label="Remove">X</button>
       </span>
     </p>
-
+ -->
 
      
 </div>
