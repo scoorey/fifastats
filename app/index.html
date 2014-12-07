@@ -9,33 +9,40 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="http://www.easports.com/fifa/15.x.x-Rev14/bundles/easfcweb/dist/css/style.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
+
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
+
     <!-- endbuild -->
   </head>
-  <body ng-app="fifastatsApp">
+  <body ng-app="fifastatsApp" >
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div class="container">
-      <div class="header">
+  
+      <div class="header back">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
+        <!--   <li><a ng-href="#/about">About</a></li> -->
+          <li><a ng-href="#/contact">About</a></li>
         </ul>
-        <h3 class="text-muted">fifastats</h3>
+    <!--     <h3 class="text-muted">FUTSCOPE</h3> -->
       </div>
 
       <div ng-view=""></div>
 
       <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p><span class="glyphicon glyphicon-globe"></span> from the FutScope team</p>
       </div>
     </div>
 
@@ -71,14 +78,19 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <!-- endbower -->
-    <!-- endbuild -->
+    <script type="text/javascript" src="bower_components/parse-angular-patch/dist/parse-angular.js"></script>
 
+    <!-- endbuild -->
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <!-- endbuild -->
         <!-- <script src="http://www.easports.com/fifa/15.x.x-Rev14/bundles/easfcweb/dist/js/easfc.min.js"></script> -->
+       
+       
+
 </body>
 </html>

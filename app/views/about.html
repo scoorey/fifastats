@@ -1,1 +1,194 @@
-<p>This is the about view.</p>
+
+<div ng-controller="AboutCtrl" class="container">
+
+	
+
+    <form role="form" ng-submit="fetch()">
+
+         <div >
+                Choose your console:
+        </div>
+   
+
+        <div id="radio" >
+    		<input  type="radio" id="radio1" name="radio" ng-model="cons" value="xbox"><label class="xbox" for="radio1">Xbox</label></input>
+    		<input type="radio" id="radio2" name="radio" ng-model="cons" value="ps4"><label class="ps4" for="radio2">PS4</label></input>
+  		</div>
+  		<br/>
+  		 <p >
+                Who do you want to scope?
+        </p>
+      	<input  type="text" ng-model="goalsfor" placeholder="Enter gamertag or PSN" class="form-control " />
+      	<span class="input-group-btn ">
+          <input type="submit" class="btn btn-primary " value="Scope opponent!" />
+        </span>
+  	</form> 
+
+
+
+
+	<div class='widget widget--1x1'>
+	  <header class='widget-header'>
+	    <div class='widget-header-indicator'></div>
+	  </header>
+	  <div class='widget-content'>
+	    <ul class='value-list'>
+	      <li>
+	        <div class='description'>
+	          Issuance
+	        </div>
+	        <div class='value'>
+	          <span class='positive'>
+	            10.8%
+	          </span>
+	        </div>
+	      </li>
+	      <li>
+	        <div class='description'>
+	          Redemption
+	        </div>
+	        <div class='value'>
+	          <span class='negative'>
+	            2.8%
+	          </span>
+	        </div>
+	      </li>
+	    </ul>
+	  </div>
+	  <footer class='widget-footer'>
+	    <a class='fa fa-trash-o'></a>
+	    <a class='fa fa-cog'></a>
+	  </footer>
+	</div>
+
+
+  	<div class="gradegroup">
+	  	<div class="grade"> 
+	  		<h4> Overall Player Rating: </h4>
+	  		 <h1> {{ grade }} </h1> 
+	  	</div>
+
+	  	<div class="goalgrade"> 
+	  		<h4> Goal Difference Rating: </h4>
+	  		 <h1> {{ goalTip }} </h1> 
+	  	</div>
+	  	<br class="clear" />
+	</div>
+
+  	<div class="possession"> 
+  		<h3> Possession </h3>
+  		<div class="posTip"> {{ possessionTip }}</div>
+  		
+  	</div>
+  	<DIV class="passing">	
+  		
+  		<h3> Passing  </h3>
+  		<div class="posTip"> {{ passTip }}</div>
+  		 	<br class="clear"></br>
+  	</DIV>
+ 
+
+
+
+ <div class='widget widget--2x1'>
+  <header class='widget-header'>
+    <div class='widget-header-indicator'></div>
+     <div class='description cent'>
+          Match Record
+        </div>
+  </header>
+  <div class='widget-content'>
+    <canvas id='donut' width='100px' height='100px'></canvas>
+    <div id="resultscontainer">
+	    <ul class='value-list'>
+	      <li>
+	        <div class='description'>
+	          Wins
+	        </div>
+	        <div class='value'>
+	          <span>{{wins}}</span>
+	          <span class='positive small'>
+	            ({{winpercent}}%)
+	          </span>
+	        </div>
+	      </li>
+	      <li>
+	        <div class='description'>
+	          Losses
+	        </div>
+	        <div class='value'>
+	          <span>{{losses}}</span>
+	          <span class='negative small'>
+	            ({{losspercent}}%)
+	          </span>
+	        </div>
+	      </li>
+	      <li>
+	        <div class='description'>
+	          Draws
+	        </div>
+	        <div class='value'>
+	          <span>{{ties}}</span>
+	          <span class='draw small'>
+	           ({{drawpercent}}%)
+	          </span>
+	        </div>
+	      </li>
+	    </ul>
+    </div>
+  </div>
+
+</div>
+
+
+  	<!-- 	<div class="rec">
+		
+
+
+		<h4 class="recordHeading"> Match Record </h4>
+	  	 
+	  	<div class="winperc"> 
+	  		<div>  Wins </div>
+	  		<h2> ( {{ winpercent }}% )</h2>
+	  	</div>
+
+	  	 <div class="lossperc"> 
+	  		<div>  Losses  </div>
+	  		<h2> ({{ losspercent }}%)</h2>
+	  	</div>
+
+	  	 <div class="drawperc"> 
+	  		<div>  Draws </div>
+	  		<h2> ({{ drawpercent }}%)</h2>
+	  	</div>
+	  	<br class="clear" />
+	</div> -->
+
+	<br />
+	<br />
+
+
+
+  	<TABLE id="customers">
+  		<tr>
+  		<td>Seasons played</td><td>{{seasonsPlayed}}</td>
+  		</tr>
+  		<tr class="alt">
+  		<td>Titles won</td><td>{{titlesWon}}</td>
+  		</tr>
+  		<tr>
+  		<td>Promotions</td><td>{{promotions}}</td>
+  		</tr>
+  		<tr class="alt">
+  		<td>Relegations</td><td>{{relegations}}</td>
+  		</tr>
+  		<tr>
+  		<td>Best Points</td><td>{{bestPoints}}</td>
+  		</tr>
+  	</TABLE>
+
+
+
+
+
+</div>

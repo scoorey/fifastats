@@ -2,6 +2,7 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+   background: #dddddd;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -12,16 +13,49 @@ body {
   padding-right: 15px;
 }
 
+.chooseTop{
+  padding-top: 100px;
+}
+
+
+.back{
+   background-image: url("../images/futscopesmall.png");
+      background-size: 100%;
+    background-repeat: no-repeat;
+    width: 730px;
+    height: 114px;
+}
+     
+.whiteback
+{
+  background-color: white;
+  background: white;
+}
+
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+ /* border-bottom: 1px solid #e5e5e5;*/
+
+
+
+
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
-  line-height: 40px;
+  line-height: 114px;
   padding-bottom: 19px;
+ background: transparent;
+}
+
+.topkek
+{
+  color: #E5B13A;
+}
+
+.container{
+  background: transparent;
 }
 
 /* Custom page footer */
@@ -45,6 +79,7 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+
 }
 .jumbotron .btn {
   font-size: 21px;
@@ -57,6 +92,194 @@ body {
 }
 .marketing p + h4 {
   margin-top: 28px;
+}
+
+.ui-state-active.xbox{
+  background: #00ff00;
+}
+
+.ui-state-active.ps4{
+  background: #58a2f5;
+}
+
+.rec {
+   border: 2px solid #a1a1a1;
+    border-radius: 25px;
+    background: #EAF2D3;
+
+     } 
+.gradegroup
+{
+  margin-top: 50px;
+   margin-bottom: 50px;
+    border: 2px solid #a1a1a1;
+    padding: 10px 40px; 
+    background: #EAF2D3;
+}
+
+.clear { clear: both; }
+
+.cellContainer { position:relative; top:0; left:0; margin:0 30px 0 30px; padding:3px;
+  background-color:#fff; border:solid 2px black; }
+
+
+.grade { 
+  width: 250px; float: left; margin-left: 100px;} 
+.goalgrade { 
+  width: 250px; float: left; }  
+
+
+.winperc { 
+  width: 150px; float: left; margin-left: 170px;} 
+.drawperc { 
+  width: 150px; float: left; }   
+.lossperc { 
+  width: 150px; float: left; } 
+
+.possession{
+   clear: both;
+   
+
+}
+
+
+.posTip{
+  font-family:  "ITC Franklin Gothic Demi Bold";
+   font-size: large;
+}
+
+.recordHeading{
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 20%;
+}
+
+
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#customers td, #customers th {
+    font-size: 1em;
+    border: 1px solid #a1a1a1;
+    padding: 3px 7px 2px 7px;
+}
+
+#customers tr.alt td {
+    color: #000000;
+    background-color: #EAF2D3;
+}
+
+.cent 
+{
+  text-align: center;
+
+}
+
+.small { font-size: 0.6em; }
+
+.widget {
+  outline: 1px solid #111;
+  border-top: 1px solid #555;
+  display: flex;
+  flex-direction: column;
+  background: #3B3B3B;
+  color: #FFFFFF;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.widget--2x1 {
+  width: $unit-size * 2;
+  height: $unit-size;
+}
+
+.widget--1x1 {
+  width: $unit-size;
+  height: $unit-size;
+}
+
+.widget-header, .widget-footer {
+  background: #2E2E2E;
+  width: 100%;
+  height: 30px;
+}
+.widget-content {
+  flex: 1;
+  padding: 20px;
+
+}
+
+.widget-footer a {
+  color: #666;
+  font-size: 14px;
+  display: inline-block;
+  margin-top: 8px;
+  margin-right: 8px;
+  float: right;
+}
+
+.widget-header-indicator {
+  border-radius: 10px;
+  width: 10px;
+  height: 10px;
+  background: #7eb348;
+  position: relative;
+  top: 8px;
+  left: 8px;
+}
+
+.padded {
+  padding: 1rem;
+}
+
+.value-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.value-list li {
+  margin: 0;
+  padding: 5px;
+}
+.value-list .description {
+  color: #666666;
+  font-size: 14px;
+  line-height: 10px;
+}
+.value-list .value {
+  color: #FFFFFF;
+  font-size: 45px;
+}
+
+.widget-content #donut {
+  position: absolute;
+  top: 40px;
+  right: 80px;
+}
+
+ul > li{
+    display: inline-block;
+    zoom:1;
+    *display:inline; /* this fix is needed for IE7- */
+}
+
+.positive{
+  color: #7eb348;
+}
+
+
+.negative{
+  color: #ff0000;
+}
+
+
+.draw{
+  color: #1fc8f8;
 }
 
 /* Responsive: Portrait tablets and up */

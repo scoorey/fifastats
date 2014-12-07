@@ -1,6 +1,7 @@
 
 'use strict';
 
+   
 /**
  * @ngdoc function
  * @name fifametricsApp.controller:MainCtrl
@@ -17,18 +18,19 @@ angular.module('fifastatsApp')
       'fred'
     ];
 
+
+
+
+
     $scope.formationStyle = {
-   width:'300px'
-};
+   		width:'300px'
+	};
 
     $scope.recentGames = {};
 	$scope.currentGame = [];
 	$scope.gameSelected = null;
 	$scope.afterGameSelected = 'blah';
-    $scope.results = {};
-    $scope.results.result = 'result';
-
-    $scope.results.options = [ 'W', 'L'];
+    $scope.result = null;
 
  	$scope.formations = {};
     $scope.formations.formation  ='formation';
@@ -108,6 +110,8 @@ angular.module('fifastatsApp')
 
 	};
 
+
+
 	$scope.getHomeCrest = function(teamID){
 		
 		var src = 'http://fifa15.content.easports.com/1630db19-29b0-4904-a574-f52f7c09e166/fifaweb_assets/crests/128x128/l' + teamID + '.png';
@@ -115,6 +119,10 @@ angular.module('fifastatsApp')
 		return src;
 	};
 
+
+	
+	//Parse.initialize('GUNVtQF5ctDuu7YzocjiN5gX3sz5xJGMTtpmzT5p', 'vA4AV2W5ISWyYwdqTk1iZEOuAWJzOELW3GBUMomY');
+  //	var Signature = Parse.Object.extend('signature');
   $scope.selectRestaurant = function(row) {
   
   	/*jshint camelcase: false */
@@ -155,11 +163,61 @@ angular.module('fifastatsApp')
 
     $scope.myUserName = $scope.recentGames[0].self.user_info;
     $scope.opponentUserName = $scope.recentGames[0].opponent.user_info;
+	
+/*	if ($scope.recentGames[0].self.stats.wins === '1')
+	{
+		$scope.result = 'WIN';
+	}
+	else if ($scope.recentGames[0].self.stats.losses === '1')
+	{
+		$scope.result = 'LOSS';
+	}
+	else
+	{
+		$scope.result = 'DRAW';
+	}
+    
+
+    Parse.initialize('GUNVtQF5ctDuu7YzocjiN5gX3sz5xJGMTtpmzT5p', 'vA4AV2W5ISWyYwdqTk1iZEOuAWJzOELW3GBUMomY');
+    
+    var TestObject2 = Parse.Object.extend('Matches');
+    var testObject2 = new TestObject2();
+      testObject2.save({Result: $scope.result, Division: $scope.divs.div, ShotsOnTarget: $scope.shotsOnTarget}, {
+      success: function(object) {
+        $('.success').show();
+      },
+      error: function(model, error) {
+        $('.error').show();
+      }
+    }); */
+    //$scope.saveSignature('hello scooter', function(){
+    	//this is the callback
+    //	console.log('we made it back');
+    //});
+
   //angular.element($0).scope() 
 	};
  
-
+ // Click handler for the Save button. Saves the form to the back-end service.
+  //$scope.saveSignature = function saveSignature(something, callback) {  
+ 
+   	//var sig = new Signature();
+   /*	 sig.save( something,
+                  {
+                    success: function (obj) {
+                      callback(obj);
+                    },
+                    error: function (obj, error) {
+                      console.log('Error:  '+ error.message);
+                    }
+                  }
+        );*/
+      // Call the saveSignature method on the service module
+     
+        // When the service call is finished, clear the form and reload the signature list.
+     
+  //    };  
+    
 
   });
-
 
