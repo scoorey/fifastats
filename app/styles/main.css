@@ -20,7 +20,7 @@ body {
 
 .back{
    background-image: url("../images/futscopesmall.png");
-      background-size: 100%;
+    background-size: 100%;
     background-repeat: no-repeat;
     width: 730px;
     height: 114px;
@@ -94,8 +94,17 @@ body {
   margin-top: 28px;
 }
 
+.xbox{
+  width:120px; 
+}
+
+
+.ps4{
+  width:120px; 
+}
+
 .ui-state-active.xbox{
-  background: #00ff00;
+  background: #7eb348;
 }
 
 .ui-state-active.ps4{
@@ -136,15 +145,11 @@ body {
 .lossperc { 
   width: 150px; float: left; } 
 
-.possession{
-   clear: both;
-   
 
-}
 
 
 .posTip{
-  font-family:  "ITC Franklin Gothic Demi Bold";
+  font-family:  "Helvetica";
    font-size: large;
 }
 
@@ -165,13 +170,13 @@ body {
 
 #customers td, #customers th {
     font-size: 1em;
-    border: 1px solid #a1a1a1;
+    border: 1px solid #000000;
     padding: 3px 7px 2px 7px;
 }
 
 #customers tr.alt td {
-    color: #000000;
-    background-color: #EAF2D3;
+    color: #FFFFFF;
+    background-color: #3B3B3B;
 }
 
 .cent 
@@ -199,14 +204,42 @@ body {
 }
 
 .widget--1x1 {
-  width: $unit-size;
+  width: 48%;
   height: $unit-size;
+   float: left;
 }
 
+.tablemine {
+  border: none;
+}
+
+.tdmine{
+ 
+  padding-left: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+.rhs{
+  margin-left: 20px;
+  margin-top: 50px;
+  float: right;
+}
+
+.rhstop{
+  margin-left: 20px;
+
+  float: right;
+}
+.possession{
+  floaf: left;
+}
 .widget-header, .widget-footer {
   background: #2E2E2E;
   width: 100%;
   height: 30px;
+  line-height: 10px;
 }
 .widget-content {
   flex: 1;
@@ -247,7 +280,7 @@ body {
   padding: 5px;
 }
 .value-list .description {
-  color: #666666;
+  color: #CDCDCD;
   font-size: 14px;
   line-height: 10px;
 }
@@ -256,6 +289,10 @@ body {
   font-size: 45px;
 }
 
+.value-list .smallvalue {
+  color: #FFFFFF;
+  font-size: 25px;
+}
 .widget-content #donut {
   position: absolute;
   top: 40px;
@@ -281,6 +318,28 @@ ul > li{
 .draw{
   color: #1fc8f8;
 }
+
+
+
+.animate-show {
+
+  opacity: 1;
+
+}
+
+.animate-show.ng-hide-add.ng-hide-add-active,
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+}
+
+.animate-show.ng-hide {
+  line-height: 0;
+  opacity: 0;
+ 
+}
+
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
