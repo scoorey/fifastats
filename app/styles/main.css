@@ -19,7 +19,7 @@ body {
 
 
 .back{
-   background-image: url("../images/futscopesmall.png");
+   background-image: url("../images/futscope.png");
     background-size: 100%;
     background-repeat: no-repeat;
     width: 730px;
@@ -233,7 +233,7 @@ body {
   float: right;
 }
 .possession{
-  floaf: left;
+  float: left;
 }
 .widget-header, .widget-footer {
   background: #2E2E2E;

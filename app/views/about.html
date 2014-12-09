@@ -4,21 +4,21 @@
 	
 
     <form role="form" ng-submit="fetch()">
-
+<!-- 
          <div >
-                Choose your console:
+                At the moment we only support Xbox One, PS4 is coming when EA fix a server issue:
         </div>
    
 
         <div id="radio" >
-    		<input  type="radio" id="radio1" name="radio" ng-model="cons" value="xbox"><label class="xbox" for="radio1">Xbox One</label></input>
+    		<input  type="radio" id="radio1" name="radio" ng-model="cons" value="xboxone"><label class="xbox" for="radio1">Xbox One</label></input>
     		<input  type="radio" id="radio2" name="radio" ng-model="cons" value="ps4"><label class="ps4" for="radio2">PS4</label></input>
   		</div>
-  		<br/>
-  		 <p >
+  		<br/> -->
+  		 <h4>
                 Who do you want to scope?
-        </p>
-      	<input  type="text" ng-model="gtpsn" placeholder="Enter Gamertag or PSN" class="form-control " />
+        </h4>
+      	<input  type="text" ng-model="gtpsn" placeholder="Enter Xbox One Gamertag" class="form-control " />
       	<span class="input-group-btn ">
           <input type="submit" class="btn btn-primary " value="Scope opponent!" />
         </span>
@@ -28,7 +28,38 @@
 	<br class="clear" /> 
 
 	<div ng-show="opponentAndConsoleNotSelected">
-		Please make sure you choose a console and opponent. 
+
+		<div class='widget widget--1x2'>
+			  <header class='widget-header'>
+			    <div class='widget-header-indicator'></div>
+			    <div class='description cent'>
+		          Error:
+		        </div>
+			  </header>
+			  <div class='widget-content'>
+			    <ul class='value-list'>
+			      <li>
+			        <div class='description'>
+			          Invalid Gamertag
+			        </div>
+			        <div class='value'>
+			          <span id="gradeTip">
+			            Please make sure you enter a valid opponent's Xbox One Gamertag. PS4 is coming when EA fix a server issue. 
+			          </span>
+			        </div>
+			      </li>
+			      
+			    
+			    </ul>
+			  </div>
+			  <footer class='widget-footer'>
+			    <a class='fa fa-trash-o'></a>
+			    <a class='fa fa-cog'></a>
+			  </footer>
+
+
+			</div>
+		
 	</div>
 
 	<div class="animate-show" ng-show="opponentAndConsoleSelected">
@@ -36,6 +67,9 @@
 			<div class='widget widget--1x1'>
 			  <header class='widget-header'>
 			    <div class='widget-header-indicator'></div>
+			    <div class='description cent'>
+		          Ratings:
+		        </div>
 			  </header>
 			  <div class='widget-content'>
 			    <ul class='value-list'>

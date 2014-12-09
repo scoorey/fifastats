@@ -21,7 +21,9 @@ angular.module('fifastatsApp')
    };   
    $scope.initRadio();
 
-
+   $('ul.nav.nav-pills li a').click(function() {           
+    $(this).parent().addClass('active').siblings().removeClass('active');           
+});
 
 $scope.consoles ={};
     $scope.consoles.options = [
@@ -79,13 +81,15 @@ $scope.consoles ={};
 
 	$scope.fetch = function(){
 		console.log($scope.gtpsn);
-		var bareurl = 'http://www.easports.com/fifa/api/fifa15-xboxone/stats/fut/';
+		$scope.cons = 'xboxone'; // comment this out when server fixed
+		var bareurl = 'http://www.easports.com/fifa/api/fifa15-';
+		var withconsole = bareurl + $scope.cons + '/stats/fut/';
 
 		if ($scope.cons && $scope.gtpsn)
 		{
 			 
 			$scope.opponentAndConsoleNotSelected = null;
-			var url = bareurl + encodeURIComponent($scope.gtpsn.trim());
+			var url = withconsole + encodeURIComponent($scope.gtpsn.trim());
 
 
 			$http.jsonp('http://query.yahooapis.com/v1/public/yql', {
@@ -96,7 +100,18 @@ $scope.consoles ={};
 			    }
 			}).then(function (result) {
 			    // result.data contains the 
-			  		$scope.opponentAndConsoleSelected = 'yess';
+			  	
+
+			  	if (result.data.query.results.data)
+			  	{
+			  			$scope.opponentAndConsoleSelected = 'yess';	
+			  	}	
+			  	else
+			  	{
+			  			$scope.opponentAndConsoleSelected = null;	
+			  		$scope.opponentAndConsoleNotSelected = 'blah';
+			  		return;
+			  	}
 			    console.log(result.data.query.results.data);
 
 			    //$scope.recentGames = result.data.query.results.json.data;
