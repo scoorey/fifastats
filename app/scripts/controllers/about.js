@@ -260,7 +260,7 @@ $scope.consoles ={};
 
 				if ($scope.passSuccess < 60)
 				{
-					$scope.passTip = 'This player can\'t pass at all, they probably don\t even know where the pass button is';
+					$scope.passTip = 'This player can\'t pass at all, they probably don\t even know where the pass button is.';
 				}
 				else if ($scope.passSuccess >= 60  && $scope.passSuccess < 70) 
 				{
@@ -275,27 +275,27 @@ $scope.consoles ={};
 					$scope.passTip = 'You\'re dealing with an elite passer here. Be careful with your intercept attempts, they will pick you apart if you make a mistake. Don\'t give the ball away cheaply';
 				}
 				
-				if ($scope.averagePossession < 52 && $scope.passSuccess < 74)
+				if ($scope.averagePossession < 52 && $scope.passSuccess < 72)
 				{
 					$scope.quickTactic = 'High Pressure';
 					$scope.mentality = 'Ultra Attacking';
 					$scope.formationTip = $scope.attackingFormations;
 				}
 
-				if ($scope.averagePossession >= 52 && $scope.passSuccess < 74)
+				if ($scope.averagePossession >= 52 && $scope.passSuccess < 72)
 				{
 					$scope.quickTactic = 'Counter Attack';
 					$scope.mentality = 'Balanced';
 					$scope.formationTip = $scope.counterAttackFormations;
 				}
-				if ($scope.averagePossession < 52 && $scope.passSuccess > 74)
+				if ($scope.averagePossession < 52 && $scope.passSuccess > 72)
 				{
 					$scope.quickTactic = 'Possession';
 					$scope.mentality = 'Attacking';
 					$scope.formationTip = $scope.possessionFormations;
 				}
 
-				if ($scope.averagePossession >= 52 && $scope.passSuccess > 74)
+				if ($scope.averagePossession >= 52 && $scope.passSuccess > 72)
 				{
 					$scope.quickTactic = 'Counter Attack';
 					$scope.mentality = 'Defensive';
