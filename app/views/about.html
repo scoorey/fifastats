@@ -1,7 +1,6 @@
 
 <div ng-controller="AboutCtrl" class="container">
 
-	
 
     <form role="form" ng-submit="fetch()">
 <!-- 
@@ -113,23 +112,20 @@
 		        </div>
 			  </header>
 
-		   <table class="tablemine">
-		      <tbody>
-		          <tr class="tablemine" ng-repeat="cols in rows">
-		              <td class="tdmine" ng-repeat = "col in cols">{{col}}</td>
-		          </tr>
-		      </tbody>
-		  </table>
+			   <table class="tablemine">
+			      <tbody>
+			          <tr class="tablemine" ng-repeat="cols in rows">
+			              <td class="tdmine" ng-repeat = "col in cols">{{col}}</td>
+			          </tr>
+			      </tbody>
+			  </table>
 
-		<!-- 	  <div class="grid" ng-repeat="formation in formationTip">
-			     <div class="col-1-2 formationColumn" ng:Show="($index+1)%2==0">
-				     {{formation}}
-				  </div>
-				   <div class="col-2-1 formationColumn" ng:Show="($index)%2==0">
-				     {{formation}}
-				  </div>
-				 
-			  </div> -->
+		<!-- 	  <ul class="mobileformations" ng-repeat="formation in formationTip">
+			  	<li >
+			  	{{formation}}
+			  	</li>
+
+			  </ul> -->
 
 			  <footer class='widget-footer'>
 			    <a class='fa fa-trash-o'></a>
@@ -137,7 +133,7 @@
 			  </footer>
 			</div>
 
-		 <br class="clear" />
+		 <br class="clear fullsite" />
 		<!-- 
 		  	<div class="gradegroup">
 			  	<div class="grade"> 
@@ -202,10 +198,12 @@
 			    <a class='fa fa-cog'></a>
 			  </footer>
 			</div>
+			<img ng-click="share()" src="../images/fbshare.png"></img>
 
+			<a class="twitter popup twitter-share-button" href="http://twitter.com/share"><img class="tweet" src="../images/tweet.png"></img></a>
 
 		  	<div > 
-		  		<h3> Possession </h3>
+		  		<h3> Possession ({{averagePossession}}) </h3>
 		  		<div class="posTip"> {{ possessionTip }}</div>
 		  		
 		  	</div>
@@ -213,7 +211,7 @@
 
 		  	<DIV>	
 		  		
-		  		<h3> Passing  </h3>
+		  		<h3> Passing ({{passSuccess}}) </h3>
 		  		<div class="posTip"> {{ passTip }}</div>
 		  		 	<br class="clear"></br>
 		  	</DIV>

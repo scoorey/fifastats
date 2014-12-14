@@ -1,6 +1,6 @@
 'use strict';
 /*global $:false */
-/*global Chart:false */
+
 /**
  * @ngdoc function
  * @name fifastatsApp.controller:AboutCtrl
@@ -9,21 +9,23 @@
  * Controller of the fifastatsApp
  */
 angular.module('fifastatsApp')
-  .controller('AboutCtrl', function ($scope, $http) {
-   
-  
+  .controller('AboutCtrl', function ($scope, $http, $location) {
 
-   $scope.initRadio = function() {
+  	$scope.target = $location.search().opponent;
+  	console.log('target = ' + $scope.target);
+
+
+/*   $scope.initRadio = function() {
    		$(function() {
 		    $( '#radio' ).buttonset();
 		
 		  });
    };   
-   $scope.initRadio();
+   $scope.initRadio();*/
 
-   $('ul.nav.nav-pills li a').click(function() {           
-    $(this).parent().addClass('active').siblings().removeClass('active');           
-});
+   	$('ul.nav.nav-pills li a').click(function() {           
+    	$(this).parent().addClass('active').siblings().removeClass('active');           
+	});
 
 $scope.consoles ={};
     $scope.consoles.options = [
@@ -31,7 +33,7 @@ $scope.consoles ={};
       'PS4',
       'PC'
     ];
-
+    $scope.shareurl = null;
     $scope.gtpsn = null;
    	$scope.rows = [];
    	$scope.opponentAndConsoleSelected = null;
@@ -58,9 +60,9 @@ $scope.consoles ={};
     $scope.titlesWon = null;
 
 
-    	$scope.quickTactic = null;
-				$scope.mentality = null;
-				$scope.formationTip = null;
+    $scope.quickTactic = null;
+	$scope.mentality = null;
+	$scope.formationTip = null;
 
     $scope.attackingFormations = ['3-4-2-1', '3-4-1-2','3-4-3', '3-5-2', '4-3-3(4)'];
     $scope.defensiveFormations = ['4-2-3-1', '5-2-1-2','5-2-2-1', '4-3-3(3)', '5-3-2'];
@@ -79,6 +81,43 @@ $scope.consoles ={};
 			$scope.goalTip = '';
 
 
+
+	$scope.share = function(){
+	    FB.ui(
+	    {
+	        method: 'feed',
+	        name: 'FUTSCOPE Scouting Report for ' + $scope.gtpsn,
+	        link: 'http://futscope.com/#/?opponent='+ $scope.gtpsn,
+	        picture: 'http://futscope.com/images/scope.jpg',
+	        caption: 'Scout your Fifa Ultimate Team Opponents',
+	        description: 'Look up your friends\' career stats, get tips on how to beat your next opponent, save yourself broken controller tantrums!', 
+	        message: ''
+	    });
+	  };
+
+	$scope.sharetwit = function(){
+		
+
+	};
+
+
+	 $('.popup').click(function(event) {
+    var width  = 575,
+        height = 400,
+        left   = ($(window).width()  - width)  / 2,
+        top    = ($(window).height() - height) / 2,
+        url    = this.href + '?text=' + 'I just FUTSCOPED ' + encodeURIComponent($scope.gtpsn) + ' at &url='  + encodeURIComponent($scope.shareurl) + '&hashtags=futscope,fifa15,fut',
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
+    
+    window.open(url, 'twitter', opts);
+ 
+    return false;
+  });
+
 	$scope.fetch = function(){
 		console.log($scope.gtpsn);
 		$scope.cons = 'xboxone'; // comment this out when server fixed
@@ -87,10 +126,11 @@ $scope.consoles ={};
 
 		if ($scope.cons && $scope.gtpsn)
 		{
-			 
+			$scope.shareurl = 'http://futscope.com/#/?opponent=' + $scope.gtpsn;
 			$scope.opponentAndConsoleNotSelected = null;
-			var url = withconsole + encodeURIComponent($scope.gtpsn.trim());
-
+			$scope.gtpsn = encodeURIComponent($scope.gtpsn.trim());
+			var url = withconsole + $scope.gtpsn;
+		
 
 			$http.jsonp('http://query.yahooapis.com/v1/public/yql', {
 			    params: {
@@ -108,7 +148,7 @@ $scope.consoles ={};
 			  	}	
 			  	else
 			  	{
-			  			$scope.opponentAndConsoleSelected = null;	
+			  		$scope.opponentAndConsoleSelected = null;	
 			  		$scope.opponentAndConsoleNotSelected = 'blah';
 			  		return;
 			  	}
@@ -260,7 +300,7 @@ $scope.consoles ={};
 
 				if ($scope.passSuccess < 60)
 				{
-					$scope.passTip = 'This player can\'t pass at all, they probably don\t even know where the pass button is.';
+					$scope.passTip = 'This player can\'t pass at all, they probably don\'t even know where the pass button is.';
 				}
 				else if ($scope.passSuccess >= 60  && $scope.passSuccess < 70) 
 				{
@@ -268,7 +308,7 @@ $scope.consoles ={};
 				}
 				else if ($scope.passSuccess >= 70  && $scope.passSuccess < 75) 
 				{
-					$scope.passTip = 'This player is pretty good at passing the ball. Try to predict where they are going to pass and get to the spot early by switching players with the right analog stick.';
+					$scope.passTip = 'This guy is pretty good at passing the ball. Try to predict where they are going to pass and get to the spot early by switching players with the right analog stick.';
 				}
 				else if ($scope.passSuccess >= 75) 
 				{
@@ -333,7 +373,7 @@ $scope.consoles ={};
 				 	donutCtx.canvas.height = 100;
 					namespace.chart = new Chart(donutCtx).Doughnut([{ value: $scope.wins, color: '#7eb348' }, { value: $scope.losses, color: '#ff0000' }, { value: $scope.ties, color: '#1fc8f8' }], { percentageInnerCutout: 50, animateScale: true, segmentShowStroke: false, animateRotate: false });
 
-
+	
 
 			});
 		}
@@ -345,5 +385,9 @@ $scope.consoles ={};
 
 	};
 
-
+	if ($scope.target)
+  	{
+  		$scope.gtpsn = $scope.target;
+  		$scope.fetch();
+  	}
 });
