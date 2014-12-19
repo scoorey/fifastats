@@ -61,13 +61,9 @@ html, body {
   background: white;
 }
 
-/* Custom page header */
-.header {
- /* border-bottom: 1px solid #e5e5e5;*/
-
-
-
-
+.half
+{
+  width: 300px; float: left;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -148,12 +144,15 @@ html, body {
      } 
 .gradegroup
 {
-  margin-top: 50px;
-   margin-bottom: 50px;
+ 
+   margin-bottom: 20px;
     border: 2px solid #a1a1a1;
-    padding: 10px 40px; 
-    background: #EAF2D3;
+    padding: 0px 10px; 
+     background: #d3d7dc;
+     float: left;
 }
+
+
 
 .clear { clear: both; }
 
@@ -193,7 +192,8 @@ html, body {
 
 #customers {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    width: 100%;
+    width: 48%;
+    float: right;
     border-collapse: collapse;
 }
 
@@ -244,7 +244,7 @@ html, body {
 
 .widget--1x1 {
   width: 48%;
-  height: $unit-size;
+
    float: left;
 }
 
@@ -262,7 +262,7 @@ html, body {
 
 .rhs{
   margin-left: 20px;
-  margin-top: 50px;
+
   float: right;
 }
 
@@ -273,6 +273,14 @@ html, body {
 .possession{
   float: left;
 }
+
+.gradeheader{
+  height:40px;
+  background: #ffffff;
+  margin:5px;
+
+}
+
 .widget-header, .widget-footer {
   background: #2E2E2E;
   width: 100%;
@@ -281,7 +289,7 @@ html, body {
 }
 .widget-content {
   flex: 1;
-  padding: 20px;
+  padding: 5px;
 
 }
 

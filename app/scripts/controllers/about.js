@@ -8,6 +8,8 @@
  * # AboutCtrl
  * Controller of the fifastatsApp
  */
+
+
 angular.module('fifastatsApp')
   .controller('AboutCtrl', function ($scope, $http, $location) {
 
@@ -117,6 +119,31 @@ $scope.consoles ={};
  
     return false;
   });
+
+	$scope.fetchps4 = function(){
+
+		var casper = require('casper').create({
+		    verbose: true,
+		    logLevel: 'error',
+		    pageSettings: {
+		        loadImages: false,
+		        loadPlugins: false,
+		        userAgent: 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.2 Safari/537.36'
+		    }
+		});
+
+		var json = [];
+		var json2 = [];
+		var data = {};
+
+
+
+		
+
+
+
+		
+	}; 
 
 	$scope.fetch = function(){
 		console.log($scope.gtpsn);

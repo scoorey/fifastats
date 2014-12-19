@@ -2,7 +2,7 @@
 <div ng-controller="AboutCtrl" class="container">
 
 
-    <form role="form" ng-submit="fetch()">
+	<form role="form" ng-submit="fetch()">
 <!-- 
          <div >
                 At the moment we only support Xbox One, PS4 is coming when EA fix a server issue:
@@ -14,149 +14,256 @@
     		<input  type="radio" id="radio2" name="radio" ng-model="cons" value="ps4"><label class="ps4" for="radio2">PS4</label></input>
   		</div>
   		<br/> -->
-  		 <h4>
-                Who do you want to scope?
-        </h4>
-      	<input  type="text" ng-model="gtpsn" placeholder="Enter Xbox One Gamertag" class="form-control " />
-      	<span class="input-group-btn ">
-          <input type="submit" class="btn btn-primary " value="Scope opponent!" />
-        </span>
+  		<h4>
+  			Who do you want to scope?
+  		</h4>
+  		<input  type="text" ng-model="gtpsn" placeholder="Enter Xbox One Gamertag" class="form-control " />
+  		<span class="input-group-btn ">
+  			<input type="submit" class="btn btn-primary " value="Scope opponent!" />
+  		</span>
+  	</form> 
+
+  	<form role="form" ng-submit="fetchps4()">
+<!-- 
+         <div >
+                At the moment we only support Xbox One, PS4 is coming when EA fix a server issue:
+        </div>
+   
+
+        <div id="radio" >
+    		<input  type="radio" id="radio1" name="radio" ng-model="cons" value="xboxone"><label class="xbox" for="radio1">Xbox One</label></input>
+    		<input  type="radio" id="radio2" name="radio" ng-model="cons" value="ps4"><label class="ps4" for="radio2">PS4</label></input>
+  		</div>
+  		<br/> -->
+  		<h4>
+  			Who do you want to scope?
+  		</h4>
+  		<input  type="text" ng-model="gtpsn2" placeholder="Enter Xbox One Gamertag" class="form-control " />
+  		<span class="input-group-btn ">
+  			<input type="submit" class="btn btn-primary " value="Scope ps4 opponent!" />
+  		</span>
   	</form> 
 
 
-	<br class="clear" /> 
+  	<br class="clear" /> 
 
-	<div ng-show="opponentAndConsoleNotSelected">
+  	<div ng-show="opponentAndConsoleNotSelected">
 
-		<div class='widget widget--1x2'>
-			  <header class='widget-header'>
-			    <div class='widget-header-indicator'></div>
-			    <div class='description cent'>
-		          Error:
-		        </div>
-			  </header>
-			  <div class='widget-content'>
-			    <ul class='value-list'>
-			      <li>
-			        <div class='description'>
-			          Invalid Gamertag
-			        </div>
-			        <div class='value'>
-			          <span id="gradeTip">
-			            Please make sure you enter a valid opponent's Xbox One Gamertag. PS4 is coming when EA fix a server issue. 
-			          </span>
-			        </div>
-			      </li>
-			      
-			    
-			    </ul>
-			  </div>
-			  <footer class='widget-footer'>
-			    <a class='fa fa-trash-o'></a>
-			    <a class='fa fa-cog'></a>
-			  </footer>
+  		<div class='widget widget--1x2'>
+  			<header class='widget-header'>
+  				<div class='widget-header-indicator'></div>
+  				<div class='description cent'>
+  					Error:
+  				</div>
+  			</header>
+  			<div class='widget-content'>
+  				<ul class='value-list'>
+  					<li>
+  						<div class='description'>
+  							Invalid Gamertag
+  						</div>
+  						<div class='value'>
+  							<span id="gradeTip">
+  								Please make sure you enter a valid opponent's Xbox One Gamertag. PS4 is coming when EA fix a server issue. 
+  							</span>
+  						</div>
+  					</li>
 
 
-			</div>
-		
-	</div>
-
-	<div class="animate-show" ng-show="opponentAndConsoleSelected">
-
-			<div class='widget widget--1x1'>
-			  <header class='widget-header'>
-			    <div class='widget-header-indicator'></div>
-			    <div class='description cent'>
-		          Ratings
-		        </div>
-			  </header>
-			  <div class='widget-content'>
-			    <ul class='value-list'>
-			      <li>
-			        <div class='description'>
-			          Overall Player Rating
-			        </div>
-			        <div class='value'>
-			          <span id="gradeTip">
-			            {{grade}}
-			          </span>
-			        </div>
-			      </li>
-			      <li>
-			        <div class='description'>
-			          Goal Difference Rating
-			        </div>
-			        <div class='value'>
-			          <span id="golTip">
-			            {{ goalTip }}
-			          </span>
-			        </div>
-			      </li>
-			    
-			    </ul>
-			  </div>
-			   <br>
-			  <footer class='widget-footer'>
-			    <a class='fa fa-trash-o'></a>
-			    <a class='fa fa-cog'></a>
-			  </footer>
+  				</ul>
+  			</div>
+  			<footer class='widget-footer'>
+  				<a class='fa fa-trash-o'></a>
+  				<a class='fa fa-cog'></a>
+  			</footer>
 
 
-			</div>
+  		</div>
 
-		<div class='widget widget--1x1 rhstop'>
-			  <header class='widget-header'>
-			    <div class='widget-header-indicator'></div>
-			    <div class='description cent'>
-		          Formation Suggestions
-		        </div>
-			  </header>
+  	</div>
 
-			   <table class="tablemine">
-			      <tbody>
-			          <tr class="tablemine" ng-repeat="cols in rows">
-			              <td class="tdmine" ng-repeat = "col in cols">{{col}}</td>
-			          </tr>
-			      </tbody>
-			  </table>
+  	<div class="animate-show" ng-show="opponentAndConsoleSelected">
+  		<div class="gradegroup">
+  			<div class="gradeheader">
+  				<h2>{{gtpsn}} Overview</h2>
+  			</div>
+  			<div class='widget widget--1x1'>
+  				<header class='widget-header'>
+  					<div class='widget-header-indicator'></div>
+  					<div class='description cent'>
+  						Ratings
+  					</div>
+  				</header>
+  				<div class='widget-content'>
+  					<ul class='value-list'>
+  						<li>
+  							<div class='description'>
+  								Overall Player Rating
+  							</div>
+  							<div class='value'>
+  								<span id="gradeTip">
+  									{{grade}}
+  								</span>
+  							</div>
+  						</li>
+  						<li>
+  							<div class='description'>
+  								Goal Difference Rating
+  							</div>
+  							<div class='value'>
+  								<span id="golTip">
+  									{{ goalTip }}
+  								</span>
+  							</div>
+  						</li>
 
-		<!-- 	  <ul class="mobileformations" ng-repeat="formation in formationTip">
-			  	<li >
-			  	{{formation}}
-			  	</li>
-
-			  </ul> -->
-
-			  <footer class='widget-footer'>
-			    <a class='fa fa-trash-o'></a>
-			    <a class='fa fa-cog'></a>
-			  </footer>
-			</div>
-
-		 <br class="clear fullsite" />
-		<!-- 
-		  	<div class="gradegroup">
-			  	<div class="grade"> 
-			  		<h4> Overall Player Rating: </h4>
-			  		 <h1> {{ grade }} </h1> 
-			  	</div>
-
-			  	<div class="goalgrade"> 
-			  		<h4> Goal Difference Rating: </h4>
-			  		 <h1> {{ goalTip }} </h1> 
-			  	</div>
-			  	<br class="clear" />
-			</div>
-		  -->
+  					</ul>
+  				</div>
+  			
+	  			<footer class='widget-footer'>
+	  				<a class='fa fa-trash-o'></a>
+	  				<a class='fa fa-cog'></a>
+	  			</footer>
 
 
-		<div class='widget widget--1x1 rhs'>
-			  <header class='widget-header'>
-			    <div class='widget-header-indicator'></div>
-			    <div class='description cent'>
-		          Tactical Advice
-		        </div>
-			  </header>
+  			</div>
+
+  			<TABLE id="customers" class="rhs">
+  				<tr class="alt">
+  					<td>Seasons played</td><td>{{seasonsPlayed}}</td>
+  				</tr>
+  				<tr >
+  					<td>Titles won</td><td>{{titlesWon}}</td>
+  				</tr>
+  				<tr class="alt">
+  					<td>Promotions</td><td>{{promotions}}</td>
+  				</tr>
+  				<tr >
+  					<td>Relegations</td><td>{{relegations}}</td>
+  				</tr>
+  				<tr class="alt">
+  					<td>Best Points</td><td>{{bestPoints}}</td>
+  				</tr>
+  			</TABLE>
+  			<div class="rhs">
+  				<img ng-click="share()" src="../images/fbshare.png"></img>
+  				<a class="twitter popup twitter-share-button" href="http://twitter.com/share"><img class="tweet" src="../images/tweet.png"></img></a>
+  			</div>
+
+  			<br class="clear"/>
+
+
+
+  			<div class='widget widget--2x1'>
+  				<header class='widget-header'>
+  					<div class='widget-header-indicator'></div>
+  					<div class='description cent'>
+  						Match Record
+  					</div>
+  				</header>
+  				<div class='widget-content'>
+  					<canvas id='donut' width='100px' height='100px'></canvas>
+  					<div id="resultscontainer">
+  						<ul class='value-list'>
+  							<li>
+  								<div class='description'>
+  									Wins
+  								</div>
+  								<div class='value'>
+  									<span>{{wins}}</span>
+  									<span class='positive small'>
+  										({{winpercent}}%)
+  									</span>
+  								</div>
+  							</li>
+  							<li>
+  								<div class='description'>
+  									Losses
+  								</div>
+  								<div class='value'>
+  									<span>{{losses}}</span>
+  									<span class='negative small'>
+  										({{losspercent}}%)
+  									</span>
+  								</div>
+  							</li>
+  							<li>
+  								<div class='description'>
+  									Draws
+  								</div>
+  								<div class='value'>
+  									<span>{{ties}}</span>
+  									<span class='draw small'>
+  										({{drawpercent}}%)
+  									</span>
+  								</div>
+  							</li>
+  						</ul>
+  					</div>
+  				</div>
+	<footer class='widget-footer'>
+  				<a class='fa fa-trash-o'></a>
+  				<a class='fa fa-cog'></a>
+  			</footer>
+  			</div>
+  		</div>
+
+  		<br class="clear"/>
+  		
+  		<div class="gradegroup">
+<div class="gradeheader">
+  				<h2>How to beat {{gtpsn}}</h2>
+  			</div>
+  			<div class="possession lhs half"> 
+					<h3> Possession ({{averagePossession}}) </h3>
+					<div class="posTip"> {{ possessionTip }}</div>
+					<br class="clear"></br>
+				</div>
+  			<div class='widget widget--1x1 rhs'>
+  			<header class='widget-header'>
+  				<div class='widget-header-indicator'></div>
+  				<div class='description cent'>
+  					Formation Suggestions
+  				</div>
+  			</header>
+
+  			<table class="tablemine">
+  				<tbody>
+  					<tr class="tablemine" ng-repeat="cols in rows">
+  						<td class="tdmine" ng-repeat = "col in cols">{{col}}</td>
+  					</tr>
+  				</tbody>
+  			</table>
+
+			<!-- 	  <ul class="mobileformations" ng-repeat="formation in formationTip">
+				  	<li >
+				  	{{formation}}
+				  	</li>
+
+				  </ul> -->
+
+				  <footer class='widget-footer'>
+				  	<a class='fa fa-trash-o'></a>
+				  	<a class='fa fa-cog'></a>
+				  </footer>
+
+				</div>
+
+
+			
+
+
+
+
+
+
+				<div class='widget widget--1x1 rhs'>
+					<header class='widget-header'>
+						<div class='widget-header-indicator'></div>
+						<div class='description cent'>
+							Tactical Advice
+						</div>
+					</header>
 		<!-- 	  <div class='widget-content'>
 			    <ul class='value-list'>
 			      
@@ -166,156 +273,52 @@
 			      	</div>
 			      </li>
 			    </ul>
-			  </div> -->
-			  <div class='widget-content'>
-			    <ul class='value-list'>
-			  	 <li>
-			        <div class='description'>
-			          Mentality
-			        </div>
-			        <div class='smallvalue'>
-			          <span id="gradeTip">
-			            {{mentality}}
-			          </span>
-			        </div>
-			      </li>
-			    
-			      <li>
-			        <div class='description'>
-			          Quick Tactic
-			        </div>
-			        <div class='smallvalue'>
-			          <span id="golTip">
-			            {{ quickTactic }}
-			          </span>
-			        </div>
-			      </li>
-			      </ul>
-			    </div>
+			</div> -->
+					<div class='widget-content'>
+						<ul class='value-list'>
+							<li>
+								<div class='description'>
+									Mentality
+								</div>
+								<div class='smallvalue'>
+									<span id="gradeTip">
+										{{mentality}}
+									</span>
+								</div>
+							</li>
 
-			  <footer class='widget-footer'>
-			    <a class='fa fa-trash-o'></a>
-			    <a class='fa fa-cog'></a>
-			  </footer>
-			</div>
-			<img ng-click="share()" src="../images/fbshare.png"></img>
+							<li>
+								<div class='description'>
+									Quick Tactic
+								</div>
+								<div class='smallvalue'>
+									<span id="golTip">
+										{{ quickTactic }}
+									</span>
+								</div>
+							</li>
+						</ul>
+					</div>
 
-			<a class="twitter popup twitter-share-button" href="http://twitter.com/share"><img class="tweet" src="../images/tweet.png"></img></a>
-
-		  	<div > 
-		  		<h3> Possession ({{averagePossession}}) </h3>
-		  		<div class="posTip"> {{ possessionTip }}</div>
-		  		
-		  	</div>
+					<footer class='widget-footer'>
+						<a class='fa fa-trash-o'></a>
+						<a class='fa fa-cog'></a>
+					</footer>
+				</div>
+		
 
 
-		  	<DIV>	
-		  		
-		  		<h3> Passing ({{passSuccess}}) </h3>
-		  		<div class="posTip"> {{ passTip }}</div>
-		  		 	<br class="clear"></br>
-		  	</DIV>
+		<DIV class="possession lhs half">	
 
-
-
-		 <div class='widget widget--2x1'>
-		  <header class='widget-header'>
-		    <div class='widget-header-indicator'></div>
-		     <div class='description cent'>
-		          Match Record
-		        </div>
-		  </header>
-		  <div class='widget-content'>
-		    <canvas id='donut' width='100px' height='100px'></canvas>
-		    <div id="resultscontainer">
-			    <ul class='value-list'>
-			      <li>
-			        <div class='description'>
-			          Wins
-			        </div>
-			        <div class='value'>
-			          <span>{{wins}}</span>
-			          <span class='positive small'>
-			            ({{winpercent}}%)
-			          </span>
-			        </div>
-			      </li>
-			      <li>
-			        <div class='description'>
-			          Losses
-			        </div>
-			        <div class='value'>
-			          <span>{{losses}}</span>
-			          <span class='negative small'>
-			            ({{losspercent}}%)
-			          </span>
-			        </div>
-			      </li>
-			      <li>
-			        <div class='description'>
-			          Draws
-			        </div>
-			        <div class='value'>
-			          <span>{{ties}}</span>
-			          <span class='draw small'>
-			           ({{drawpercent}}%)
-			          </span>
-			        </div>
-			      </li>
-			    </ul>
-		    </div>
-		  </div>
+			<h3> Passing ({{passSuccess}}) </h3>
+			<div class="posTip"> {{ passTip }}</div>
+			<br class="clear"></br>
+		</DIV>
 
 		</div>
 
+	</div>	
 
-		  	<!-- 	<div class="rec">
-				
-
-
-				<h4 class="recordHeading"> Match Record </h4>
-			  	 
-			  	<div class="winperc"> 
-			  		<div>  Wins </div>
-			  		<h2> ( {{ winpercent }}% )</h2>
-			  	</div>
-
-			  	 <div class="lossperc"> 
-			  		<div>  Losses  </div>
-			  		<h2> ({{ losspercent }}%)</h2>
-			  	</div>
-
-			  	 <div class="drawperc"> 
-			  		<div>  Draws </div>
-			  		<h2> ({{ drawpercent }}%)</h2>
-			  	</div>
-			  	<br class="clear" />
-			</div> -->
-
-			<br />
-			<br />
-
-
-
-		  	<TABLE id="customers">
-		  		<tr class="alt">
-		  		<td>Seasons played</td><td>{{seasonsPlayed}}</td>
-		  		</tr>
-		  		<tr >
-		  		<td>Titles won</td><td>{{titlesWon}}</td>
-		  		</tr>
-		  		<tr class="alt">
-		  		<td>Promotions</td><td>{{promotions}}</td>
-		  		</tr>
-		  		<tr >
-		  		<td>Relegations</td><td>{{relegations}}</td>
-		  		</tr>
-		  		<tr class="alt">
-		  		<td>Best Points</td><td>{{bestPoints}}</td>
-		  		</tr>
-		  	</TABLE>
-
-	</div>
 
 
 
